@@ -45,6 +45,20 @@ Symlinks point from the expected config location to the repo file. This means:
 - `git diff` always reflects the current state.
 - No risk of repo and active config drifting out of sync.
 
+### Symlink Commands
+
+Assuming the repo is cloned to `~/oh-my-terminal`:
+
+```sh
+ln -s ~/oh-my-terminal/zsh/zshrc ~/.zshrc
+ln -s ~/oh-my-terminal/tmux/tmux.conf ~/.tmux.conf
+ln -s ~/oh-my-terminal/vim/vimrc ~/.vimrc
+mkdir -p ~/.config
+ln -s ~/oh-my-terminal/starship/starship.toml ~/.config/starship.toml
+mkdir -p ~/.config/ghostty
+ln -s ~/oh-my-terminal/ghostty/config ~/.config/ghostty/config
+```
+
 ## README
 
 The README includes:
