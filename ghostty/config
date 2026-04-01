@@ -1,0 +1,41 @@
+command = /bin/zsh
+shell-integration = zsh
+
+# Font
+font-family = "JetBrains Mono NL Slashed"
+font-size = 14.0
+font-thicken = true
+
+# Window
+fullscreen = false
+window-padding-x = 20
+window-padding-y = 16
+window-padding-balance = true
+window-width = 140
+window-height = 36
+macos-non-native-fullscreen = true
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+window-save-state = always
+window-colorspace = display-p3
+
+# Appearance
+theme = Dracula+
+background-opacity = 0.90
+background-blur-radius = 20
+unfocused-split-opacity = 0.6
+minimum-contrast = 1.1
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = false
+
+# Mouse
+mouse-hide-while-typing = true
+focus-follows-mouse = true
+
+# Misc
+desktop-notifications = true
+auto-update = check
+copy-on-select = clipboard
+
