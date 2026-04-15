@@ -11,6 +11,7 @@ Clone this repo, then create symlinks. The commands below assume the repo lives 
 | Repo path                | Symlink target              |
 |--------------------------|-----------------------------|
 | `zsh/zshrc`              | `~/.zshrc`                  |
+| `zsh/zimrc`              | `~/.zimrc`                  |
 | `tmux/tmux.conf`         | `~/.tmux.conf`              |
 | `vim/vimrc`              | `~/.vimrc`                  |
 | `starship/starship.toml` | `~/.config/starship.toml`   |
@@ -24,6 +25,7 @@ Back up any existing files first, then create the symlinks:
 # Back up existing configs
 mkdir -p ~/.config-backup
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.config-backup/
+[ -f ~/.zimrc ] && mv ~/.zimrc ~/.config-backup/
 [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.config-backup/
 [ -f ~/.vimrc ] && mv ~/.vimrc ~/.config-backup/
 [ -f ~/.config/starship.toml ] && mv ~/.config/starship.toml ~/.config-backup/
@@ -31,6 +33,7 @@ mkdir -p ~/.config-backup
 
 # Create symlinks
 ln -s ~/oh-my-terminal/zsh/zshrc ~/.zshrc
+ln -s ~/oh-my-terminal/zsh/zimrc ~/.zimrc
 ln -s ~/oh-my-terminal/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/oh-my-terminal/vim/vimrc ~/.vimrc
 mkdir -p ~/.config
