@@ -45,24 +45,24 @@ ln -s ~/oh-my-terminal/ghostty/config ~/.config/ghostty/config
 |------|---------|
 | Ghostty | https://ghostty.org |
 | zsh | https://www.zsh.org |
-| Oh My Zsh | https://ohmyz.sh |
+| Zim (zimfw) | https://zimfw.sh |
 | Starship | https://starship.rs |
 | tmux | https://github.com/tmux/tmux |
 | vim | https://www.vim.org |
 
-### Oh My Zsh plugins
+### Zim modules
 
-Third-party plugins are cloned into `$ZSH_CUSTOM/plugins/` (defaults to `~/.oh-my-zsh/custom/plugins/`), then enabled by adding their name to the `plugins=(...)` array in `.zshrc`. For example:
+Modules are managed via `~/.zimrc`. Add a module with `zmodule`, then run `zimfw install`. For example, add these lines to `~/.zimrc`:
 
 ```sh
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-syntax-highlighting
 ```
 
-Then in `.zshrc`:
+Then install:
 
 ```sh
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+zimfw install
 ```
 
 ## Adding a new tool
