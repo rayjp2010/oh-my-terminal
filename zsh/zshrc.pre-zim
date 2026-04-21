@@ -1,0 +1,36 @@
+# Alias
+alias src='cd $HOME/workspace'
+alias vim='nvim'
+alias gst='git status'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gb='git branch -vv'
+alias gaa='git add .'
+alias ga='git add'
+alias gcm='git commit -m'
+alias gp='git pull'
+alias gps='git push'
+alias gpsf='git push -f'
+alias gbd='git branch -D'
+
+# starship script
+eval "$(starship init zsh)"
+
+# ENV
+export LANG=en_US.UTF-8
+## gcp cli
+export PATH="$HOME/workspace/google-cloud-sdk/bin:$PATH"
+## Created by `pipx` on 2024-08-07 06:55:08
+export PATH="$PATH:/Users/rui.a.ding/.local/bin"
+
+
+# Browser-Use
+export PATH="/Users/rui.a.ding/.browser-use-env/bin:/Users/rui.a.ding/.local/bin:$PATH"
+eval "$(/Users/rui.a.ding/.local/bin/mise activate zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rui.a.ding/workspace/work/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rui.a.ding/workspace/work/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rui.a.ding/workspace/work/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rui.a.ding/workspace/work/google-cloud-sdk/completion.zsh.inc'; fi
+
