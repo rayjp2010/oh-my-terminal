@@ -53,5 +53,5 @@ zmodule zsh-users/zsh-history-substring-search
 # Fish-like autosuggestions for Zsh. Add the following to your ~/.zshrc to boost
 # performance: ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zmodule zsh-users/zsh-autosuggestions
-
-zmodule ohmyzsh/ohmyzsh --root plugins/globalias --source globalias.plugin.zsh
+zmodule antoineco/zim-zoxide
+zmodule pXius/zim-gcloud
