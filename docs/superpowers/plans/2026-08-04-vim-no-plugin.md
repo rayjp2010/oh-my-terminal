@@ -139,18 +139,7 @@ cleanup_vim_test_home() {
 trap cleanup_vim_test_home EXIT
 
 HOME="$vim_test_home" vim -Nu "$PWD/vim/vimrc" -n -es \
-  -c 'call assert_equal(1, &number, "number must be enabled")' \
-  -c 'call assert_equal(1, &relativenumber, "relative numbers must be enabled")' \
-  -c 'call assert_equal(1, &ignorecase, "ignorecase must be enabled")' \
-  -c 'call assert_equal(1, &smartcase, "smartcase must be enabled")' \
-  -c 'call assert_equal(1, &incsearch, "incremental search must be enabled")' \
-  -c 'call assert_equal(1, &splitbelow, "splits must open below")' \
-  -c 'call assert_equal(1, &splitright, "splits must open right")' \
-  -c 'call assert_equal(1, &undofile, "persistent undo must be enabled")' \
-  -c 'call assert_equal(" ", get(g:, "mapleader", ""), "space must be the leader")' \
-  -c 'call assert_notequal("", maparg(" w", "n"), "leader-save mapping must exist")' \
-  -c 'call assert_notequal("", maparg("\<Esc>", "n"), "escape mapping must exist")' \
-  -c 'if has("clipboard") | call assert_equal("unnamed", &clipboard, "system clipboard must be enabled") | endif' \
+  -c 'call assert_equal(1, &number, "number must be enabled") | call assert_equal(1, &relativenumber, "relative numbers must be enabled") | call assert_equal(1, &ignorecase, "ignorecase must be enabled") | call assert_equal(1, &smartcase, "smartcase must be enabled") | call assert_equal(1, &incsearch, "incremental search must be enabled") | call assert_equal(1, &splitbelow, "splits must open below") | call assert_equal(1, &splitright, "splits must open right") | call assert_equal(1, &undofile, "persistent undo must be enabled") | call assert_equal(" ", get(g:, "mapleader", ""), "space must be the leader") | call assert_notequal("", maparg(" w", "n"), "leader-save mapping must exist") | call assert_notequal("", maparg("\<Esc>", "n"), "escape mapping must exist") | if has("clipboard") | call assert_equal("unnamed", &clipboard, "system clipboard must be enabled") | endif' \
   -c 'if len(v:errors) | cquit 1 | endif' \
   -c 'qall!'
 ```
