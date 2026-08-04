@@ -1,113 +1,11 @@
-# Start configuration added by Zim Framework install {{{
-#
-# User configuration sourced by interactive shells
-#
-
-# -----------------
-# Zsh configuration
-# -----------------
-
-#
-# History
-#
-
-# Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
-
-#
-# Input/output
-#
-
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
-
-# Prompt for spelling correction of commands.
-#setopt CORRECT
-
-# Customize spelling correction prompt.
-#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
-# Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
-# --------------------
-# Module configuration
-# --------------------
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
-
-# Set a custom terminal title format using prompt expansion escape sequences.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
-
-# ------------------
-# Initialize modules
-# ------------------
-
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  fi
-fi
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init
-fi
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
-# }}} End configuration added by Zim Framework install
-
-# Alias
 alias src='cd $HOME/workspace'
-alias vim='nvim'
 alias gst='git status'
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -121,41 +19,25 @@ alias gpsf='git push -f'
 alias gbd='git branch -D'
 alias gss='git stash save'
 alias grb='git rebase -i '
-alias gbd='git branch -D '
 alias gcp='git cherry-pick '
 alias glog='git log --reverse'
 
-# Initialize Mise before tools it manages, such as Starship.
-if command -v mise >/dev/null 2>&1; then
+export PATH="$HOME/.local/bin:$PATH"
+
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+ZIM_CONFIG_FILE=${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc}
+
+if [[ -r ${ZIM_CONFIG_FILE} && ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]] && (( ${+commands[brew]} )); then
+  zimfw_script="$(brew --prefix zimfw 2>/dev/null)/share/zimfw.zsh"
+  [[ -r ${zimfw_script} ]] && source "${zimfw_script}" init
+fi
+
+[[ -r ${ZIM_HOME}/init.zsh ]] && source "${ZIM_HOME}/init.zsh"
+
+if (( ${+commands[mise]} )); then
   eval "$(mise activate zsh)"
 fi
 
-if command -v starship >/dev/null 2>&1; then
+if (( ${+commands[starship]} )); then
   eval "$(starship init zsh)"
 fi
-
-# ENV
-export LANG=en_US.UTF-8
-## gcp cli
-export PATH="$HOME/workspace/google-cloud-sdk/bin:$PATH"
-## Created by `pipx` on 2024-08-07 06:55:08
-export PATH="$PATH:/Users/rui.a.ding/.local/bin"
-
-
-# Browser-Use
-export PATH="/Users/rui.a.ding/.browser-use-env/bin:/Users/rui.a.ding/.local/bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/rui.a.ding/workspace/work/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rui.a.ding/workspace/work/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/rui.a.ding/workspace/work/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rui.a.ding/workspace/work/google-cloud-sdk/completion.zsh.inc'; fi
-
-
-# pnpm
-export PNPM_HOME="/Users/rui.a.ding/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
