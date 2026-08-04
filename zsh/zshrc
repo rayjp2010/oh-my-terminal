@@ -2,9 +2,6 @@ setopt HIST_IGNORE_ALL_DUPS
 bindkey -e
 WORDCHARS=${WORDCHARS//[\/]}
 
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
 alias src='cd $HOME/workspace'
 alias gst='git status'
 alias gco='git checkout'
@@ -24,20 +21,6 @@ alias glog='git log --reverse'
 
 export PATH="$HOME/.local/bin:$PATH"
 
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-ZIM_CONFIG_FILE=${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc}
-
-if [[ -r ${ZIM_CONFIG_FILE} && ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE} ]] && (( ${+commands[brew]} )); then
-  zimfw_script="$(brew --prefix zimfw 2>/dev/null)/share/zimfw.zsh"
-  [[ -r ${zimfw_script} ]] && source "${zimfw_script}" init
-fi
-
-[[ -r ${ZIM_HOME}/init.zsh ]] && source "${ZIM_HOME}/init.zsh"
-
 if (( ${+commands[mise]} )); then
   eval "$(mise activate zsh)"
-fi
-
-if (( ${+commands[starship]} )); then
-  eval "$(starship init zsh)"
 fi
