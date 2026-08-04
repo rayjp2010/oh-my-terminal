@@ -61,32 +61,16 @@ removing it.
 
 ### 4. Copy terminal configuration files
 
-Run the following from the repository root. It moves every existing destination
-into a timestamped backup directory, including an old symlink, before copying
-the repository version into place.
+Run the following from the repository root. These commands overwrite the active
+configuration files with the repository versions.
 
 ```sh
-backup_dir="$HOME/.config-backup/oh-my-terminal-$(date +%Y%m%d-%H%M%S)"
-
-copy_config() {
-  source_path="$1"
-  destination_path="$2"
-  backup_path="$3"
-
-  if [ -e "$destination_path" ] || [ -L "$destination_path" ]; then
-    mkdir -p "$(dirname "$backup_dir/$backup_path")"
-    mv "$destination_path" "$backup_dir/$backup_path"
-  fi
-
-  mkdir -p "$(dirname "$destination_path")"
-  cp "$source_path" "$destination_path"
-}
-
-copy_config zsh/zshrc "$HOME/.zshrc" zshrc
-copy_config zsh/zimrc "$HOME/.zimrc" zimrc
-copy_config vim/vimrc "$HOME/.vimrc" vimrc
-copy_config starship/starship.toml "$HOME/.config/starship.toml" starship.toml
-copy_config ghostty/config "$HOME/.config/ghostty/config" ghostty/config
+mkdir -p ~/.config/ghostty
+cp zsh/zshrc ~/.zshrc
+cp zsh/zimrc ~/.zimrc
+cp vim/vimrc ~/.vimrc
+cp starship/starship.toml ~/.config/starship.toml
+cp ghostty/config ~/.config/ghostty/config
 ```
 
 ### 5. Restart affected applications
