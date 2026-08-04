@@ -51,14 +51,14 @@ directory. During setup, `mise/config.toml` is copied to
 
 ### Mise
 
-`mise/config.toml` declares every unique tool currently installed through Mise,
-using `latest` versions. It includes the existing configured tools plus current
+`mise/config.toml` declares the selected tools to manage through Mise, using
+`latest` versions. It preserves the existing configured tools and adds selected
 installed tools that were not yet declared in the user configuration:
 
 - `aws-cli`, `claude-code`, `codex`, `gcloud`, `gh`, `glab`, and `herdr`
-- Node.js, Python, `pnpm`, Terraform, TFLint, and `uv`
+- Node.js, Python, `pnpm`, and `uv`
 - Starship and Zoxide
-- `npm:@colbymchenry/codegraph` and `npm:@fission-ai/openspec`
+- `npm:@colbymchenry/codegraph`
 - `usage`, moved from Homebrew because Mise provides it through its registry
 
 Old duplicate runtime versions are not encoded. The managed configuration

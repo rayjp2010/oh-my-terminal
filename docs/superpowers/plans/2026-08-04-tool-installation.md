@@ -76,12 +76,9 @@ glab = "latest"
 herdr = "latest"
 node = "latest"
 "npm:@colbymchenry/codegraph" = "latest"
-"npm:@fission-ai/openspec" = "latest"
 pnpm = "latest"
 python = "latest"
 starship = "latest"
-terraform = "latest"
-tflint = "latest"
 usage = "latest"
 uv = "latest"
 zoxide = "latest"
@@ -94,9 +91,9 @@ experimental = true
 minimum_release_age = "0"
 ```
 
-The two namespaced npm tools preserve the installed tools rather than the
-historical duplicate versions. `usage` resolves through Mise's registry; do
-not use the Homebrew formula after this migration.
+The namespaced Codegraph tool preserves the selected installed tool rather than
+its historical duplicate versions. `usage` resolves through Mise's registry;
+do not use the Homebrew formula after this migration.
 
 - [ ] **Step 2: Verify Mise can load the repository configuration without changing the real global configuration**
 
@@ -190,8 +187,8 @@ provide. Use Mise for languages, runtimes, and developer CLIs.
 `mise/config.toml` installs:
 
 - Cloud and Git tools: AWS CLI, Google Cloud CLI, `gh`, and `glab`
-- AI and development tools: Claude Code, Codex, Herdr, Codegraph, and OpenSpec
-- Languages and runtimes: Node.js, Python, pnpm, Terraform, TFLint, `uv`, and `usage`
+- AI and development tools: Claude Code, Codex, Herdr, and Codegraph
+- Languages and runtimes: Node.js, Python, pnpm, `uv`, and `usage`
 - Terminal tools: Starship and Zoxide
 
 ## Bootstrap a new Mac
