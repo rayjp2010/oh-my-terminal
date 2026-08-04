@@ -8,7 +8,6 @@ syntax enable
 
 " Navigation and search
 set number
-set relativenumber
 set cursorline
 set mouse=a
 set scrolloff=8
@@ -22,6 +21,11 @@ set hlsearch
 set wildmenu
 set wildmode=longest:full,full
 set completeopt=menuone,noselect
+
+" Change cursor shape based on mode
+let &t_SI = "\e[5 q" " SI = Insert mode (blinking vertical bar)
+let &t_SR = "\e[4 q" " SR = Replace mode (solid underline)
+let &t_EI = "\e[1 q" " EI = Normal mode / Everything else (blinking block)
 
 " File handling
 set hidden
