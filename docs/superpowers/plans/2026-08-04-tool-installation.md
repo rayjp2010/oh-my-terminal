@@ -246,7 +246,6 @@ copy_config() {
 
 copy_config zsh/zshrc "$HOME/.zshrc" zshrc
 copy_config zsh/zimrc "$HOME/.zimrc" zimrc
-copy_config tmux/tmux.conf "$HOME/.tmux.conf" tmux.conf
 copy_config vim/vimrc "$HOME/.vimrc" vimrc
 copy_config starship/starship.toml "$HOME/.config/starship.toml" starship.toml
 copy_config ghostty/config "$HOME/.config/ghostty/config" ghostty/config
@@ -264,7 +263,6 @@ Ghostty to load its copied configuration.
 | `mise/config.toml` | `~/.config/mise/config.toml` |
 | `zsh/zshrc` | `~/.zshrc` |
 | `zsh/zimrc` | `~/.zimrc` |
-| `tmux/tmux.conf` | `~/.tmux.conf` |
 | `vim/vimrc` | `~/.vimrc` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `ghostty/config` | `~/.config/ghostty/config` |
@@ -292,7 +290,7 @@ zimfw install
 
 Run: `sed -n '1,260p' README.md && git diff --check`
 
-Expected: the README contains no `ln -s` commands, the seven source/destination
+Expected: the README contains no `ln -s` commands, the six source/destination
 pairs match the configuration table, and `git diff --check` reports no
 whitespace errors.
 

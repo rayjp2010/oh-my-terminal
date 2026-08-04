@@ -11,8 +11,6 @@ oh-my-terminal/
 ├── README.md
 ├── zsh/
 │   └── zshrc
-├── tmux/
-│   └── tmux.conf
 ├── vim/
 │   └── vimrc
 ├── starship/
@@ -32,7 +30,6 @@ oh-my-terminal/
 | Repo path              | Symlink target               |
 |------------------------|------------------------------|
 | `zsh/zshrc`            | `~/.zshrc`                   |
-| `tmux/tmux.conf`       | `~/.tmux.conf`               |
 | `vim/vimrc`            | `~/.vimrc`                   |
 | `starship/starship.toml` | `~/.config/starship.toml`  |
 | `ghostty/config`       | `~/.config/ghostty/config`   |
@@ -51,7 +48,6 @@ Assuming the repo is cloned to `~/oh-my-terminal`:
 
 ```sh
 ln -s ~/oh-my-terminal/zsh/zshrc ~/.zshrc
-ln -s ~/oh-my-terminal/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/oh-my-terminal/vim/vimrc ~/.vimrc
 mkdir -p ~/.config
 ln -s ~/oh-my-terminal/starship/starship.toml ~/.config/starship.toml

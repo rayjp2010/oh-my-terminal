@@ -32,8 +32,6 @@ oh-my-terminal/
 │   └── config
 ├── starship/
 │   └── starship.toml
-├── tmux/
-│   └── tmux.conf
 ├── vim/
 │   └── vimrc
 ├── zsh/
@@ -88,7 +86,7 @@ The README describes these steps in this order:
 3. Back up then copy `mise/config.toml` to `~/.config/mise/config.toml`.
 4. Run `mise install` to install the declared languages, runtimes, and CLIs.
 5. Back up then copy each terminal configuration file to its normal destination
-   (`~/.zshrc`, `~/.zimrc`, `~/.tmux.conf`, `~/.vimrc`,
+   (`~/.zshrc`, `~/.zimrc`, `~/.vimrc`,
    `~/.config/starship.toml`, and `~/.config/ghostty/config`).
 6. Restart the terminal or reload the relevant application.
 

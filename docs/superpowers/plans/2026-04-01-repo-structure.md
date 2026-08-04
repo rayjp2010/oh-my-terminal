@@ -17,8 +17,6 @@ oh-my-terminal/
 ├── README.md              — repo description, symlink table, setup commands
 ├── zsh/
 │   └── zshrc              — copied from ~/.zshrc
-├── tmux/
-│   └── tmux.conf          — copied from ~/.tmux.conf
 ├── vim/
 │   └── vimrc              — copied from ~/.vimrc
 ├── starship/
@@ -33,7 +31,6 @@ oh-my-terminal/
 
 **Files:**
 - Create: `zsh/zshrc`
-- Create: `tmux/tmux.conf`
 - Create: `vim/vimrc`
 - Create: `starship/starship.toml`
 - Create: `ghostty/config`
@@ -43,7 +40,7 @@ The user's existing config files live at their standard locations. Copy each one
 - [ ] **Step 1: Create the five tool directories**
 
 ```bash
-mkdir -p zsh tmux vim starship ghostty
+mkdir -p zsh vim starship ghostty
 ```
 
 Run from: `/Users/rui.a.ding/workspace/oh-my-terminal`
@@ -52,7 +49,6 @@ Run from: `/Users/rui.a.ding/workspace/oh-my-terminal`
 
 ```bash
 cp ~/.zshrc zsh/zshrc
-cp ~/.tmux.conf tmux/tmux.conf
 cp ~/.vimrc vim/vimrc
 cp ~/.config/starship.toml starship/starship.toml
 cp ~/.config/ghostty/config ghostty/config
@@ -63,7 +59,7 @@ Run from: `/Users/rui.a.ding/workspace/oh-my-terminal`
 - [ ] **Step 3: Verify the files were copied**
 
 ```bash
-ls -la zsh/zshrc tmux/tmux.conf vim/vimrc starship/starship.toml ghostty/config
+ls -la zsh/zshrc vim/vimrc starship/starship.toml ghostty/config
 ```
 
 Expected: All five files exist with non-zero sizes (except `vimrc` which is 0 bytes on the system).
@@ -71,12 +67,11 @@ Expected: All five files exist with non-zero sizes (except `vimrc` which is 0 by
 - [ ] **Step 4: Commit**
 
 ```bash
-git add zsh/ tmux/ vim/ starship/ ghostty/
+git add zsh/ vim/ starship/ ghostty/
 git commit -m "Add terminal config files
 
 Copy existing configs into per-tool directories:
 - zsh/zshrc
-- tmux/tmux.conf
 - vim/vimrc
 - starship/starship.toml
 - ghostty/config"
@@ -109,7 +104,6 @@ Clone this repo, then create symlinks. The commands below assume the repo lives 
 | Repo path                | Symlink target              |
 |--------------------------|-----------------------------|
 | `zsh/zshrc`              | `~/.zshrc`                  |
-| `tmux/tmux.conf`         | `~/.tmux.conf`              |
 | `vim/vimrc`              | `~/.vimrc`                  |
 | `starship/starship.toml` | `~/.config/starship.toml`   |
 | `ghostty/config`         | `~/.config/ghostty/config`  |
@@ -122,14 +116,12 @@ Back up any existing files first, then create the symlinks:
 # Back up existing configs
 mkdir -p ~/.config-backup
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.config-backup/
-[ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/.config-backup/
 [ -f ~/.vimrc ] && mv ~/.vimrc ~/.config-backup/
 [ -f ~/.config/starship.toml ] && mv ~/.config/starship.toml ~/.config-backup/
 [ -f ~/.config/ghostty/config ] && mv ~/.config/ghostty/config ~/.config-backup/
 
 # Create symlinks
 ln -s ~/oh-my-terminal/zsh/zshrc ~/.zshrc
-ln -s ~/oh-my-terminal/tmux/tmux.conf ~/.tmux.conf
 ln -s ~/oh-my-terminal/vim/vimrc ~/.vimrc
 mkdir -p ~/.config
 ln -s ~/oh-my-terminal/starship/starship.toml ~/.config/starship.toml
@@ -165,7 +157,7 @@ git commit -m "Add README with symlink table and setup commands"
 ### Task 3: Replace original config files with symlinks
 
 **Files:**
-- Modify (on disk, outside repo): `~/.zshrc`, `~/.tmux.conf`, `~/.vimrc`, `~/.config/starship.toml`, `~/.config/ghostty/config`
+- Modify (on disk, outside repo): `~/.zshrc`, `~/.vimrc`, `~/.config/starship.toml`, `~/.config/ghostty/config`
 
 This task activates the repo by replacing the user's original config files with symlinks pointing into the repo. Backs up originals first.
 
@@ -174,7 +166,6 @@ This task activates the repo by replacing the user's original config files with 
 ```bash
 mkdir -p ~/.config-backup
 cp ~/.zshrc ~/.config-backup/zshrc.bak
-cp ~/.tmux.conf ~/.config-backup/tmux.conf.bak
 cp ~/.vimrc ~/.config-backup/vimrc.bak
 cp ~/.config/starship.toml ~/.config-backup/starship.toml.bak
 cp ~/.config/ghostty/config ~/.config-backup/ghostty-config.bak
@@ -196,8 +187,6 @@ Expected: Five `.bak` files present.
 rm ~/.zshrc
 ln -s ~/oh-my-terminal/zsh/zshrc ~/.zshrc
 
-rm ~/.tmux.conf
-ln -s ~/oh-my-terminal/tmux/tmux.conf ~/.tmux.conf
 
 rm ~/.vimrc
 ln -s ~/oh-my-terminal/vim/vimrc ~/.vimrc
@@ -212,7 +201,7 @@ ln -s ~/oh-my-terminal/ghostty/config ~/.config/ghostty/config
 - [ ] **Step 4: Verify symlinks are correct**
 
 ```bash
-ls -la ~/.zshrc ~/.tmux.conf ~/.vimrc ~/.config/starship.toml ~/.config/ghostty/config
+ls -la ~/.zshrc ~/.vimrc ~/.config/starship.toml ~/.config/ghostty/config
 ```
 
 Expected: Each file shows as a symlink (`l` permission prefix) pointing to the corresponding path under `~/oh-my-terminal/`.
@@ -223,4 +212,4 @@ Expected: Each file shows as a symlink (`l` permission prefix) pointing to the c
 source ~/.zshrc
 ```
 
-Expected: Shell reloads without errors. (Other tools — tmux, vim, starship, ghostty — can be verified by opening them normally.)
+Expected: Shell reloads without errors. (Other tools — vim, starship, ghostty — can be verified by opening them normally.)
