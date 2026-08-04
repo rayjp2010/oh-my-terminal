@@ -1,0 +1,63 @@
+" Core behavior
+if &compatible
+  set nocompatible
+endif
+
+filetype plugin indent on
+syntax enable
+
+" Navigation and search
+set number
+set relativenumber
+set cursorline
+set mouse=a
+set scrolloff=8
+set sidescrolloff=8
+set splitbelow
+set splitright
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set wildmenu
+set wildmode=longest:full,full
+set completeopt=menuone,noselect
+
+" File handling
+set hidden
+set autoread
+set updatetime=300
+set timeoutlen=500
+set backspace=indent,eol,start
+
+" Persisted state
+if has('persistent_undo')
+  let s:undo_dir = expand('~/.vim/undo')
+  if !isdirectory(s:undo_dir)
+    call mkdir(s:undo_dir, 'p')
+  endif
+  let &undodir = s:undo_dir
+  set undofile
+endif
+
+if has('clipboard')
+  set clipboard=unnamed
+endif
+
+augroup restore_cursor_position
+  autocmd!
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line('$') |
+        \   execute 'normal! g`"' |
+        \ endif
+augroup END
+
+" Mappings
+let mapleader = ' '
+nnoremap <silent> <leader>w <Cmd>write<CR>
+nnoremap <silent> <leader>q <Cmd>quit<CR>
+nnoremap <silent> <Esc> <Cmd>nohlsearch<CR>
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
