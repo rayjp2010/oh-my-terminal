@@ -1,0 +1,26 @@
+[tools]
+aws-cli = { version = "latest", symlink_bins = "true" }
+claude-code = "latest"
+codex = "latest"
+gcloud = "latest"
+gh = "latest"
+glab = "latest"
+herdr = "latest"
+node = "latest"
+"npm:@colbymchenry/codegraph" = "latest"
+"npm:@fission-ai/openspec" = "latest"
+pnpm = "latest"
+python = "latest"
+starship = "latest"
+terraform = "latest"
+tflint = "latest"
+usage = "latest"
+uv = "latest"
+zoxide = "latest"
+
+[settings]
+trusted_config_paths = [
+    "~/workspace",
+]
+experimental = true
+minimum_release_age = "0"
