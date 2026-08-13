@@ -1,0 +1,18 @@
+[flavor]
+dark = "dracula"
+
+# git.yazi signs (the flavor doesn't ship a [git] section)
+[git]
+modified  = { fg = "yellow" }
+added     = { fg = "green" }
+untracked = { fg = "magenta" }
+deleted   = { fg = "red", bold = true }
+updated   = { fg = "yellow" }
+ignored   = { fg = "darkgray" }
+
+modified_sign  = "M"
+added_sign     = "A"
+untracked_sign = "?"
+deleted_sign   = "D"
+updated_sign   = "U"
+ignored_sign   = "I"

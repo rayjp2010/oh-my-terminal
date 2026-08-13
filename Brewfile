@@ -1,9 +1,16 @@
+brew "cliproxyapi", restart_service: :changed
 brew "mise"
 brew "mole"
+brew "officecli"
 brew "zimfw"
 
 cask "cc-switch"
 cask "chatgpt"
 cask "claude"
+cask "drawio"
 cask "ghostty"
+cask "google-drive"
+cask "obsidian"
 cask "orbstack"
+cask "slack"
+cask "zed"

@@ -14,17 +14,18 @@ provide. Use Mise for languages, runtimes, and developer CLIs.
 
 `Brewfile` installs:
 
-- Formulae: `mise`, `mole`, and `zimfw`
-- Casks: CC Switch, ChatGPT, Claude, Ghostty, and OrbStack
+- Formulae: `cliproxyapi`, `mise`, `mole`, `officecli`, and `zimfw`
+- Casks: CC Switch, ChatGPT, Claude, draw.io, Ghostty, Google Drive, Obsidian,
+  OrbStack, Slack, and Zed
 
 ### Mise
 
-`mise/config.toml` installs:
+`mise/mise-config.toml` installs:
 
 - Cloud and Git tools: AWS CLI, Google Cloud CLI, `gh`, and `glab`
 - AI and development tools: Claude Code, Codex, Herdr, and Codegraph
 - Languages and runtimes: Node.js, Python, pnpm, `uv`, and `usage`
-- Terminal tools: Starship and Zoxide
+- Terminal tools: Starship, Yazi, and Zoxide
 
 ## Bootstrap a new Mac
 
@@ -51,7 +52,7 @@ if [ -e ~/.config/mise/config.toml ] || [ -L ~/.config/mise/config.toml ]; then
   mv ~/.config/mise/config.toml ~/.config/mise/config.toml.before-oh-my-terminal
 fi
 
-cp mise/config.toml ~/.config/mise/config.toml
+cp mise/mise-config.toml ~/.config/mise/config.toml
 mise install
 ```
 
@@ -65,15 +66,25 @@ Run the following from the repository root. These commands overwrite the active
 configuration files with the repository versions.
 
 ```sh
-mkdir -p ~/.config/ghostty
+mkdir -p ~/.config/ghostty ~/.config/yazi
 cp zsh/zshrc ~/.zshrc
 cp zsh/zimrc ~/.zimrc
 cp vim/vimrc ~/.vimrc
 cp starship/starship.toml ~/.config/starship.toml
 cp ghostty/config ~/.config/ghostty/config
+cp yazi/* ~/.config/yazi/
 ```
 
-### 5. Restart affected applications
+### 5. Install Yazi plugins and flavors
+
+`yazi/package.toml` pins the plugins and the Dracula flavor. Download them into
+`~/.config/yazi/plugins` and `~/.config/yazi/flavors`:
+
+```sh
+ya pkg install
+```
+
+### 6. Restart affected applications
 
 Open a new terminal for the Zsh, Mise, Starship, and Zoxide changes. Restart
 Ghostty to load its copied configuration.
@@ -82,12 +93,16 @@ Ghostty to load its copied configuration.
 
 | Repository file | Active location |
 | --- | --- |
-| `mise/config.toml` | `~/.config/mise/config.toml` |
+| `mise/mise-config.toml` | `~/.config/mise/config.toml` |
 | `zsh/zshrc` | `~/.zshrc` |
 | `zsh/zimrc` | `~/.zimrc` |
 | `vim/vimrc` | `~/.vimrc` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `ghostty/config` | `~/.config/ghostty/config` |
+| `yazi/*` | `~/.config/yazi/` |
+
+`~/.config/yazi/plugins` and `~/.config/yazi/flavors` are downloaded by
+`ya pkg install` and are not kept in this repository.
 
 ## Keeping configurations in sync
 
@@ -106,3 +121,36 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule zsh-users/zsh-syntax-highlighting
 zimfw install
 ```
+
+## Yazi
+
+Yazi is the terminal file manager, installed through Mise. Run it with `yazi`.
+Its configuration is split across four files:
+
+| File | Contents |
+| --- | --- |
+| `yazi/yazi.toml` | Pane ratio, hidden files, sorting, preview sizes, and the `git` fetchers that put git status in the linemode |
+| `yazi/keymap.toml` | `l` and `Enter` use `smart-enter`, `Ctrl-o` reveals in Finder, `!` opens a shell in the current directory |
+| `yazi/theme.toml` | Selects the Dracula flavor and defines the git status signs the flavor does not ship |
+| `yazi/init.lua` | Loads the `full-border` and `git` plugins |
+
+### Adding a plugin or flavor
+
+Install it with `ya pkg`, which writes the pinned revision into
+`~/.config/yazi/package.toml`:
+
+```sh
+ya pkg add yazi-rs/plugins:smart-enter
+ya pkg add yazi-rs/flavors:dracula
+```
+
+Plugins that need to be started add a line to `init.lua`; plugins bound to a key
+add a block to `keymap.toml`. Check the plugin's README for which it needs. Copy
+the changed files back into this repository:
+
+```sh
+cp ~/.config/yazi/package.toml ~/.config/yazi/init.lua ~/.config/yazi/keymap.toml yazi/
+```
+
+Run `ya pkg upgrade` to move the pins forward, then copy `package.toml` back
+here as well.
