@@ -23,8 +23,8 @@ provide. Use Mise for languages, runtimes, and developer CLIs.
 `mise/mise-config.toml` installs:
 
 - Cloud and Git tools: AWS CLI, Google Cloud CLI, `gh`, and `glab`
-- AI and development tools: Claude Code, Codex, Herdr, and Codegraph
-- Languages and runtimes: Node.js, Python, pnpm, `uv`, and `usage`
+- AI and development tools: Claude Code, Codex, and Herdr
+- Languages and runtimes: Node.js, Python, and pnpm
 - Terminal tools: Starship, Yazi, and Zoxide
 
 ## Bootstrap a new Mac
