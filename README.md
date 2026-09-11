@@ -14,16 +14,16 @@ provide. Use Mise for languages, runtimes, and developer CLIs.
 
 `Brewfile` installs:
 
-- Formulae: `cliproxyapi`, `mise`, `mole`, `officecli`, and `zimfw`
-- Casks: CC Switch, ChatGPT, Claude, draw.io, Ghostty, Google Drive, Obsidian,
-  OrbStack, Slack, and Zed
+- Formulae: `cliproxyapi`, `gettext`, `mise`, `mole`, `officecli`, and `zimfw`
+- Casks: CC Switch, ChatGPT, Claude, DBeaver Community, draw.io, Ghostty,
+  Google Drive, Obsidian, OrbStack, Session Manager Plugin, Slack, and Zed
 
 ### Mise
 
 `mise/mise-config.toml` installs:
 
 - Cloud and Git tools: AWS CLI, Google Cloud CLI, `gh`, and `glab`
-- AI and development tools: Claude Code, Codex, and Herdr
+- AI and development tools: Claude Code, Codex, Herdr, and OpenSpec
 - Languages and runtimes: Node.js, Python, and pnpm
 - Terminal tools: Starship, Yazi, and Zoxide
 
